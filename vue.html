@@ -11,15 +11,17 @@
 <body>
     <div id="app">
         <ul>
-          <li v-for="tarea in tareas">
+          <li v-for="tarea in tareas"  @click="eliminar(tarea)" ref="item1">
             {{ tarea.text }}
-            <a href="#!" @click="tareas.splice([tarea,1])"><i class="icono">X</i></a>
+            <!--<a href="#!" @click="tareas.splice([tarea,1])"><i class="icono">X</i></a>-->
           </li>
         </ul>
         <input ref="item" v-model="message" placeholder="Escribir tarea a agregar" />
         <button @click="addItem">Añadir tarea</button>
    </div>
 </body>
+
+<p v-for="tarea in tareas"  @click="eliminar(tarea)" ref="item1"></p>
 
     <script>
     new Vue({
@@ -28,7 +30,15 @@
       message: '',
     tareas : []
     },
+
     methods: {
+
+      eliminar: function(tarea) {
+                this.tareas.splice(this.tareas.indexOf(tarea), 1);
+            },
+
+
+      
       addItem: function () {
         this.tareas.push({text: this.message});
         this.message = "";
