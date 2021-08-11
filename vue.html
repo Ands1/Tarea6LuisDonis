@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="vue.js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas asignadas</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+          <li v-for="tarea in tareas">
+            {{ tarea.text }}
+            <a href="#!" @click="tareas.splice([tarea,1])"><i class="icono">X</i></a>
+          </li>
+        </ul>
+        <input ref="item" v-model="message" placeholder="Escribir tarea a agregar" />
+        <button @click="addItem">Añadir tarea</button>
+   </div>
+</body>
+
+    <script>
+    new Vue({
+    el: '#app',
+    data: {
+      message: '',
+    tareas : []
+    },
+    methods: {
+      addItem: function () {
+        this.tareas.push({text: this.message});
+        this.message = "";
+        this.$refs.item.focus();
+      }
+    }
+  })
+    </script>
+
+</html>
