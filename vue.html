@@ -11,6 +11,7 @@
     <title>Tareas asignadas</title>
 </head>
 <body>
+<main>
 <div class="container w-50 p-5">
 <!--  <div class="card text-center" style="width: 50rem;">-->
     <div id="app">
@@ -27,17 +28,16 @@
                   <ul class="list-group-numbered list-group-item-action active mb-3 rounded">
                     <li class="list-group-item mx-auto cursor" v-for="tarea in tareas" @click="eliminar(tarea)"ref="item1">
                     {{ tarea.text }} 
-                   <!--<a href="#!" @click="tareas.splice([tarea,1])"><i class="icono">X</i></a>-->
                     </li>
                   </ul>
-           
+                  <p v-for="tarea in tareas"  @click="eliminar(tarea)" ref="item1"></p>
       </div>
     </div>
 <!--  </div>-->
 </div>
-</body>
 
-<p v-for="tarea in tareas"  @click="eliminar(tarea)" ref="item1"></p>
+</body>
+</main>
 
     <script>
     new Vue({
@@ -45,7 +45,7 @@
     data: {
       message: '',
     tareas : []
-    },
+    }, 
 
     methods: {
 
